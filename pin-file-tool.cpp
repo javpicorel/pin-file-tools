@@ -64,6 +64,9 @@ int main(int argc, char *argv[])
     printf("===============================================\n");
     printf("You need to specify the size of the dataset\n");
     printf("===============================================\n");
+    printf("1 - 1GB\n");
+    printf("2 - 2GB\n");
+    printf("4 - 4GB\n");
     printf("8 - 8GB\n");
     printf("16 - 16GB\n");
     printf("32 - 32GB\n");
@@ -103,6 +106,9 @@ int main(int argc, char *argv[])
       str_workload[strlen("RocksDB")] = '\0';
 
       switch (size){
+        case S1GB:
+        case S2GB:
+        case S4GB:
         case S8GB:
           start = ROCKSDB_8GB_RANGE_START;
           end = ROCKSDB_8GB_RANGE_END;
@@ -142,6 +148,9 @@ int main(int argc, char *argv[])
       str_workload[strlen("TPC-H")] = '\0';
 
       switch (size){
+        case S1GB:
+        case S2GB:
+        case S4GB:
         case S8GB:
           start = TPCH_8GB_RANGE_START;
           end = TPCH_8GB_RANGE_END;
@@ -186,6 +195,9 @@ int main(int argc, char *argv[])
       str_workload[strlen("TPC-DS")] = '\0';
 
       switch (size){
+        case S1GB:
+        case S2GB:
+        case S4GB:
         case S8GB:
           start = TPCDS_8GB_RANGE_START;
           end = TPCDS_8GB_RANGE_END;
@@ -236,6 +248,9 @@ int main(int argc, char *argv[])
       str_workload[strlen("Memcached")] = '\0';
 
       switch (size){
+        case S1GB:
+        case S2GB:
+        case S4GB:
         case S8GB:
           start = MEMCACHED_8GB_RANGE_START;
           end = MEMCACHED_8GB_RANGE_END;
@@ -267,6 +282,9 @@ int main(int argc, char *argv[])
       str_workload[strlen("Cassandra")] = '\0';
 
       switch (size){
+        case S1GB:
+        case S2GB:
+        case S4GB:
         case S8GB:
           start = CASSANDRA_8GB_RANGE_START;
           end = CASSANDRA_8GB_RANGE_END;
@@ -397,6 +415,18 @@ int main(int argc, char *argv[])
   }
 
   switch (size){
+      case S1GB:
+        strcat(pinatrace, "1gb");
+        strcat(filtered, "1gb");
+        break;
+      case S2GB:
+        strcat(pinatrace, "2gb");
+        strcat(filtered, "2gb");
+        break;
+      case S4GB:
+        strcat(pinatrace, "4gb");
+        strcat(filtered, "4gb");
+        break;
       case S8GB:
         strcat(pinatrace, "8gb");
         strcat(filtered, "8gb");
